@@ -84,7 +84,7 @@ main p:last-child {
     font-size: 1.2em;           /* Gør teksten 20% større end standarden */
     font-style: italic;         /* Giver teksten et let, kursivt udseende */
     color: #0056b3;             /* En dybere blå farve for kontrast */
-    max-width: 600px;           /* Sikrer, at teksten ikke strækker sig for bredt på store skærme */
+    max-width: 800px;           /* Sikrer, at teksten ikke strækker sig for bredt på store skærme */
     margin: 30px auto 40px auto; /* Mere luft over og under teksten (skubber footeren lidt ned, hvis der er plads) */
     padding: 15px;              /* Giver teksten "luft" indeni */
     border-left: 5px solid #007bff; /* Tilføjer en visuel markør i venstre side */
@@ -92,5 +92,6 @@ main p:last-child {
     border-radius: 5px;         /* Let afrundede hjørner */
 
 }
+
 
 
