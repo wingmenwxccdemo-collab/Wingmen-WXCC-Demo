@@ -28,7 +28,7 @@ header h1 {
     padding: 20px 0;               /* Lidt ekstra plads over og under */
     margin: 0;                     /* Fjerner standard margin fra h1 */
     text-transform: uppercase;     /* Gør alle bogstaver til store bogstaver */
-    border-bottom: 3px solid #ffd700; /* En matchende understregning */
+    border-bottom: 3px solid #ffffff; /* En matchende understregning */
     display: inline-block;         /* Nødvendig for at border-bottom kun dækker teksten */
     transform: skewX(-5deg);       /* Giver en let skrå effekt for dynamik */
     transition: all 0.3s ease;     /* Glidende overgang ved hover-effekt */
@@ -92,4 +92,5 @@ main p:last-child {
     border-radius: 5px;         /* Let afrundede hjørner */
 
 }
+
 
