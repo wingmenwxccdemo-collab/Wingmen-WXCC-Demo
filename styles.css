@@ -20,7 +20,7 @@ header {
 header h1 {
     font-family: 'Georgia', serif; /* En klassisk, mere fremtrædende skrifttype */
     font-size: 3.5em;              /* Gør teksten meget større */
-    color: #fff;                /* En skinnende guld/gul farve */
+    color: #ffffff;                /* En skinnende guld/gul farve */
     text-shadow: 
         2px 2px 4px rgba(0, 0, 0, 0.7), /* En dyb, mørk skygge */
         -2px -2px 4px rgba(255, 255, 255, 0.4); /* En lysere skygge for 3D-effekt */
@@ -90,4 +90,5 @@ main p:last-child {
     border-left: 5px solid #007bff; /* Tilføjer en visuel markør i venstre side */
     background-color: #e9f7ff;  /* Meget lys, blød baggrundsfarve */
     border-radius: 5px;         /* Let afrundede hjørner */
+
 }
