@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #26295e;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Styling af overskriften for at gøre den mere iøjnefaldende */
+header h1 {
+    font-family: 'Georgia', serif; /* En klassisk, mere fremtrædende skrifttype */
+    font-size: 3.5em;              /* Gør teksten meget større */
+    color: #fff;                /* En skinnende guld/gul farve */
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.7), /* En dyb, mørk skygge */
+        -2px -2px 4px rgba(255, 255, 255, 0.4); /* En lysere skygge for 3D-effekt */
+    letter-spacing: 2px;           /* Lidt mere afstand mellem bogstaverne */
+    padding: 20px 0;               /* Lidt ekstra plads over og under */
+    margin: 0;                     /* Fjerner standard margin fra h1 */
+    text-transform: uppercase;     /* Gør alle bogstaver til store bogstaver */
+    border-bottom: 3px solid #ffd700; /* En matchende understregning */
+    display: inline-block;         /* Nødvendig for at border-bottom kun dækker teksten */
+    transform: skewX(-5deg);       /* Giver en let skrå effekt for dynamik */
+    transition: all 0.3s ease;     /* Glidende overgang ved hover-effekt */
+}
+
+/* En lille hover-effekt for interaktivitet */
+header h1:hover {
+    color: #fff;                   /* Ændrer til hvid ved hover */
+    text-shadow: 
+        3px 3px 6px rgba(0, 0, 0, 0.9),
+        -3px -3px 6px rgba(255, 255, 255, 0.6);
+    transform: skewX(0deg) scale(1.02); /* Retter op og skalerer let op */
+}
+
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Container til at centrere billedet */
+.image-container {
+    /* **NY STOR BREDDE:** Øg max-width til f.eks. 1200px for at tillade et større billede */
+    margin: 20px auto;
+    max-width: 1200px; 
+}
+
+/* Styling af selve billedet (VIGTIGSTE ÆNDRINGER HER) */
+.image-container img {
+    /* Sikrer dynamisk skalering: Billedet fylder 90% af sin containerbredde */
+    width: 90%; 
+    /* Sætter den maksimale bredde billedet må have (kan ikke blive bredere end .image-container's max-width) */
+    max-width: 100%; 
+    height: auto; /* VIGTIGT: Bevarer billedets proportioner, når bredden ændres */
+    display: block;
+    margin: 0 auto;
+    border: 5px solid #007bff;
+    border-radius: 8px;
+}
+
+/* Styling af footeren (ingen ændringer her) */
+footer {
+    background-color: #35424a;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+}
+
+/* Styling for at gøre den sidste paragraf mere indbydende */
+main p:last-child {
+    font-size: 1.2em;           /* Gør teksten 20% større end standarden */
+    font-style: italic;         /* Giver teksten et let, kursivt udseende */
+    color: #0056b3;             /* En dybere blå farve for kontrast */
+    max-width: 600px;           /* Sikrer, at teksten ikke strækker sig for bredt på store skærme */
+    margin: 30px auto 40px auto; /* Mere luft over og under teksten (skubber footeren lidt ned, hvis der er plads) */
+    padding: 15px;              /* Giver teksten "luft" indeni */
+    border-left: 5px solid #007bff; /* Tilføjer en visuel markør i venstre side */
+    background-color: #e9f7ff;  /* Meget lys, blød baggrundsfarve */
+    border-radius: 5px;         /* Let afrundede hjørner */
+}
