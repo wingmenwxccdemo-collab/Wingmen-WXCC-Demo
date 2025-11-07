@@ -5,7 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webex WEB Chat Demo</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f7f7fa;
+        }
+        header, footer {
+            background: #13294B;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        main {
+            text-align: center;
+            padding: 2rem;
+        }
+        .image-container img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        #startChatBtn {
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #startChatBtn:hover {
+            background-color: #005fa3;
+        }
+    </style>
 </head>
+
 <body>
 
     <header>
@@ -17,25 +54,87 @@
             <img src="background.png" alt="Beskrivelse af billedet">
         </div>
 
-        <p>Du kan klikke på ikonet i nederste højre hjørne for at starte en chat session</p>
+        <p>Du kan klikke på knappen nedenfor for at starte en chat session</p>
+
+        <!-- Manual chat start button -->
+        <button id="startChatBtn">Start Chat</button>
     </main>
 
     <footer>
         <p>&copy; Wingmen 2025</p>
     </footer>    
 
-    <!-- Put Chat Widget 1 Line Below -->
+    <!-- Chat container -->
+    <div id="divicw" data-bind="B1A4CEAC-AE92-4B57-AE78-CF967E7C5925"></div>
 
-    <div id="divicw" data-bind="B1A4CEAC-AE92-4B57-AE78-CF967E7C5925" data-org=""></div><script>var i={t:function(t){var e="https://attachuk.imi.chat/widget/js/imichatinit.js";try{var o=new XMLHttpRequest;o.onreadystatechange=function(){if(this.readyState==4){var t=document.getElementById("divicw");if(this.status==0){i.o(t);return}var e=document.createElement("script");e.innerHTML=this.responseText;t.parentNode.insertBefore(e,t.nextSibling)}};o.open("GET",e,true);o.send()}catch(s){console.error(s)}},o:function(t){t.insertAdjacentHTML("afterend",'<iframe id="tls_al_frm" frameborder="0" style="overflow: hidden;height: 208px;width: 394px;position: fixed;display: block;right: 48px;bottom: 12px;z-index: 99999; display:none;"></iframe>');var e=document.getElementById("tls_al_frm");var o=e.contentWindow||(e.contentDocument.document||e.contentDocument);o.document.open();o.document.write('<!doctype html><html><head><meta charset="utf-8"><title>Untitled Document</title><style>body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;color: #99a0b0;font-size: 14px;}.popover__content{background-color: #fbfbfe; padding: 1.5rem; border-radius: 5px; width: 300px; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);position: relative;}.popover__message{font-weight: 600;color:#56627c;font-size: 16px;}.pull-left{float:left;}.clearfix{clear: both;}.hdr-txt{width: 218px; margin-top: 3px;}.para-txt a{text-decoration: none;color: #005cde;}.close-btn{position: absolute;right:15px;top:15px;}.close-btn a{text-decoration: none;font-weight: 400; color: #56627c; font-size: 16px;}</style></head><body><div class="popover__content"><div class="close-btn"><a href="#" onclick="closeTLSAlert();">X</a></div><div class="popover__message"><div class="pull-left hdr-txt">This browser version is not supported on LiveChat.</div></div><div class="clearfix"></div><p class="para-txt">Please update your browser to the latest version and re-open the website to access the widget. </p></div><script>function closeTLSAlert(){window.parent.postMessage({key: "close_tls_alert",value: "close_tls_alert",action: "close_tls_alert"}, "*");}<\/script></body></html>');o.document.close();e.style.display="block";window.addEventListener("message",function(t){if(t.data.action=="close_tls_alert"){i.s()}})},s:function(){var t=document.getElementById("tls_al_frm");t.remove()}};i.t(function(t){});</script>
+    <script>
+    // -----------------------------
+    // Webex Connect Web Chat Loader
+    // -----------------------------
+    function loadWebexChat() {
+        console.log("🔹 Initializing Webex chat widget...");
 
+        // Prevent multiple initializations
+        if (window.webexChatLoaded) {
+            console.log("⚙️ Chat already loaded — skipping re-init.");
+            return;
+        }
+        window.webexChatLoaded = true;
+        sessionStorage.setItem("chat_started", "true");
 
-    <!-- Chat Widget Above -->  
+        var loader = {
+            t: function(t) {
+                var e = "https://attachuk.imi.chat/widget/js/imichatinit.js";
+                try {
+                    var o = new XMLHttpRequest();
+                    o.onreadystatechange = function() {
+                        if (this.readyState === 4) {
+                            var t = document.getElementById("divicw");
+                            if (this.status === 0) {
+                                loader.o(t);
+                                return;
+                            }
+                            var e = document.createElement("script");
+                            e.innerHTML = this.responseText;
+                            t.parentNode.insertBefore(e, t.nextSibling);
+                        }
+                    };
+                    o.open("GET", e, true);
+                    o.send();
+                } catch (s) {
+                    console.error("❌ Chat init error:", s);
+                }
+            },
+            o: function(t) {
+                console.error("⚠️ Chat widget fallback triggered — browser unsupported.");
+            }
+        };
 
-    
+        loader.t(function(t){});
+    }
 
+    // -----------------------------
+    // Chat Initialization Logic
+    // -----------------------------
+    document.addEventListener("DOMContentLoaded", function() {
+        const startBtn = document.getElementById("startChatBtn");
+        const chatStarted = sessionStorage.getItem("chat_started");
+
+        if (chatStarted === "true") {
+            console.log("💬 Chat previously started — auto-loading widget...");
+            loadWebexChat();
+            startBtn.style.display = "none";
+        }
+
+        startBtn.addEventListener("click", () => {
+            console.log("🟢 Start Chat clicked");
+            loadWebexChat();
+            startBtn.style.display = "none";
+        });
+    });
+    </script>
 
 </body>
-
 </html>
 
 
